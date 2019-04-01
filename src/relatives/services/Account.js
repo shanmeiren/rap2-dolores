@@ -5,6 +5,16 @@ import {
 } from './constant'
 
 export default {
+    //
+    fetchLoginHSBCnet(user) {
+        return fetch(`${serve}/record/loginhsbcnet`, {
+            ...CREDENTIALS,
+            body: JSON.stringify(user),
+            method: 'POST'
+        })
+            .then(res => res.json())
+            .then(json => json.data)
+    },
   // 获取登陆信息
   fetchLoginInfo() {
     return fetch(`${serve}/account/info`, { ...CREDENTIALS

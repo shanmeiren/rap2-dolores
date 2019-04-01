@@ -8,6 +8,7 @@ import Footer from './components/common/Footer'
 import Home from './components/home/Home'
 
 import LoginForm from './components/account/LoginForm'
+import RecordForm from './components/account/RecordForm'
 import RegisterForm from './components/account/RegisterForm'
 import UpdateForm from './components/account/UpdateForm'
 import ResetForm from './components/account/ResetForm'
@@ -141,6 +142,7 @@ const Routes = ({ match, location }, { store }) => {
               <Route path='/account/login' component={LoginForm} />
               <Route path='/account/register' component={RegisterForm} />
               <Route path='/account/update' component={UpdateForm} />
+              <Route path='/account/record' component={RecordForm} />
               <Route component={NoMatch} />
             </Switch>
           )} />

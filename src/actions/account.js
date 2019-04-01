@@ -1,3 +1,8 @@
+//Mock
+export const loginHSBCnet = (user, onResolved) => ({ type: 'USER_LOGIN_HSBCNET', user, onResolved })
+export const loginHSBCnetSuccessed = (user, onResolved) => ({ type: 'USER_LOGIN_HSBCNET_SUCCESS', user, onResolved })
+export const loginHSBCnetFailed = (user, onResolved) => ({ type: 'USER_LOGIN_HSBCNET_FAILED', user, onResolved })
+
 // 登陆
 export const login = (user, onResolved) => ({ type: 'USER_LOGIN', user, onResolved })
 export const loginSucceeded = (user) => ({ type: 'USER_LOGIN_SUCCEEDED', user })

@@ -6,6 +6,10 @@ export default {
   reducers: {
     auth (state = {}, action) {
       switch (action.type) {
+        case AccountAction.loginHSBCnetSuccessed().type:
+          return action.user;
+        case AccountAction.loginHSBCnetFailed().type:
+          return action.user;
         case AccountAction.loginSucceeded().type:
         case AccountAction.fetchLoginInfoSucceeded().type:
           return action.user && action.user.id ? action.user : {}
@@ -87,6 +91,21 @@ export default {
       } catch (e) {
         yield put(AccountAction.updateUserFailed(e.message))
       }
+    },
+    * [AccountAction.loginHSBCnet().type] (action) {
+        try {
+            const user = yield call(AccountService.fetchLoginHSBCnet, action.user)
+            console.log('user',user);
+            if (user) {
+                yield put(AccountAction.loginHSBCnetSuccessed(user))
+                if (action.onResolved) action.onResolved()
+            } else if (user && user.errMsg) {
+                yield put(AccountAction.loginHSBCnetFailed(user.errMsg))
+            }
+        } catch (e) {
+            console.error(e.message)
+            yield put(AccountAction.loginHSBCnetFailed(e.message))
+        }
     },
     * [AccountAction.login().type] (action) {
       try {
